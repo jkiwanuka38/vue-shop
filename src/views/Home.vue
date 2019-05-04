@@ -17,6 +17,7 @@
         </div>
       </div>
     </div>
+    <login></login>
   </div>
 </template>
 
@@ -25,11 +26,12 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import Hero from "@/components/Hero.vue";
 import Products from "@/sections/Products.vue";
+import Login from "@/components/Login.vue";
 
 export default {
   name: 'home',
   components: {
-    HelloWorld, Hero, Products
+    HelloWorld, Hero, Products, Login
   }
 }
 </script>
