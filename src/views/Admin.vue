@@ -95,7 +95,7 @@
 <script>
 // @ is an alias to /src
 import Hero from "@/components/Hero.vue";
-// import {fb} from '../firebase';
+import {fb} from '../firebase';
 export default {
   name: "admin",
   data(){
