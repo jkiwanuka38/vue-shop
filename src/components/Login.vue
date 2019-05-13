@@ -33,6 +33,8 @@
                                 </div>
 
                             </div>
+                            <!-- end of login -->
+
                             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
                                 
                                 <h5 class="text-center">Create New Account</h5>
@@ -56,6 +58,7 @@
                                 </div>
 
                             </div>
+                            <!-- end of register -->
                         </div>
                     </div>
                 </div>
@@ -80,6 +83,25 @@ export default {
     }
   },
   methods:{
+    login(){
+        fb.auth().signInWithEmailAndPassword(this.email, this.password)
+        .then((user) => {
+            $('#login').modal('hide');
+            this.$router.replace('admin');
+        })
+        .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode === 'auth/wrong-password') {
+                alert('Wrong password.');
+            } else {
+                alert(errorMessage);
+            }
+            console.log(error);
+        });
+    },
+
     register(){
         fb.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then((user) => {
@@ -97,10 +119,6 @@ export default {
             }
             console.log(error);
         });
-    },
-
-    login(){
-
     }
   }
 };

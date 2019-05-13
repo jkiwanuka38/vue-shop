@@ -19,8 +19,8 @@
                             <img class="img-responsive img-rounded" src="/img/user.png" alt="User picture">
                         </div>
                         <div class="user-info">
-                            <span class="user-name">Philip
-                                <strong>Kiwanuka</strong>
+                            <span class="user-name">
+                                <strong>Administration</strong>
                             </span>
                             <span class="user-role"> {{email}} </span>
                         </div>
@@ -112,18 +112,18 @@ export default {
         $(".page-wrapper").toggleClass("toggled");
       },
       logout(){
-          fb.auth().signOut()
-          .then(() => {
-              this.$router.replace('/');
-          })
-          .catch((err) =>{
-              console.log(err);
-          });
+        fb.auth().signOut()
+        .then(() => {
+            this.$router.replace('/');
+        })
+        .catch((err) =>{
+            console.log(err);
+        });
       }
   },
   created(){
-      let user = fb.auth().currentUser;
-      this.email = user.email;
+    let user = fb.auth().currentUser;
+    this.email = user.email;
   }
 };
 </script>
