@@ -112,11 +112,14 @@ export default {
         $(".page-wrapper").toggleClass("toggled");
       },
       logout(){
+        this.$Progress.start();
         fb.auth().signOut()
         .then(() => {
             this.$router.replace('/');
+            this.$Progress.finish();
         })
         .catch((err) =>{
+            this.$Progress.fail();
             console.log(err);
         });
       }

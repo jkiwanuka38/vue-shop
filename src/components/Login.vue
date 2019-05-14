@@ -84,12 +84,15 @@ export default {
   },
   methods:{
     login(){
+        this.$Progress.start();
         fb.auth().signInWithEmailAndPassword(this.email, this.password)
         .then((user) => {
             $('#login').modal('hide');
             this.$router.replace('admin');
+            this.$Progress.finish();
         })
         .catch(function(error) {
+            this.$Progress.fail();
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -103,12 +106,15 @@ export default {
     },
 
     register(){
+        this.$Progress.start();
         fb.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then((user) => {
             $('#login').modal('hide');
             this.$router.replace('admin');
+            this.$Progress.finish();
         })
         .catch(function(error) {
+            this.$Progress.fail();
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
